@@ -134,7 +134,7 @@ int main(){
 }
 ```
 # Output:
-![alt text](<Screenshot 2025-12-26 180859.png>)
+![alt text](<Screenshot 2025-12-26 184507.png>)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
