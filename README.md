@@ -28,7 +28,31 @@ To formulate a C program to convert a decimal number into its binary equivalent 
 ### Step 8: 
    Stop
 # Program:
+```
+#include <stdio.h>
+int main() {
+    int num, bin[32], i = 0;
+    printf("Enter a decimal number: ");
+    scanf("%d", &num);
+    if (num == 0) {
+        printf("Binary = 0");
+        return 0;
+    }
+    while (num > 0) {
+        bin[i] = num % 2;
+        num = num / 2;
+        i++;
+    }
+    printf("Binary = ");
+    for (i = i - 1; i >= 0; i--) {
+        printf("%d", bin[i]);
+    }
+
+    return 0;
+}
+```
 # Output:
+![alt text](m3-1.png)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -67,7 +91,50 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9: 
   Stop
 # Program:
+```
+#include <stdio.h>
+int main(){
+    int a[10][10];
+    int r, c, i, j, k;
+    int min, colIndex;
+    int found = 0;
+    scanf("%d %d", &r, &c);
+    
+    for (i = 0; i < r; i++){
+        for (j = 0; j < c; j++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+    for (i = 0; i < r; i++){
+        min = a[i][0];
+        colIndex = 0;
+        for (j = 1; j < c; j++){
+            if (a[i][j] < min)
+            {
+                min = a[i][j];
+                colIndex = j;
+            }
+        }
+        for (k = 0; k < r; k++){
+            if (a[k][colIndex] > min)
+                break;
+        }
+        if (k == r){
+            printf("\nSaddle Point Found!\n");
+            printf("Value = %d\n", min);
+            printf("Position = Row %d, Column %d\n", i + 1, colIndex + 1);
+            found = 1;
+            break;
+        }
+    }
+    if (!found){
+        printf("\nNo Saddle Point exists in the matrix.\n");
+    }
+    return 0;
+}
+```
 # Output:
+![alt text](<Screenshot 2025-12-26 180859.png>)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -101,7 +168,26 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[100];
+    int i, len;
+    printf("Enter a string: ");
+    scanf("%s", str);   
+    len = strlen(str);
+    printf("Reversed string: ");
+
+    for (i = len - 1; i >= 0; i--) {
+        printf("%c", str[i]);
+    }
+
+    return 0;
+}
+```
 # Output:
+![alt text](<Screenshot 2025-12-26 180933.png>)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -135,7 +221,30 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8:
   Stop
 # Program:
+```
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char str[100];
+    int frequency[256]={0};//array to store freq of all ascii characters
+    int i;
+    fgets(str,sizeof(str),stdin);
+    for(i=0;str[i]!='\0';i++){
+        if(str[i]!='\n')
+        frequency[(unsigned char)str[i]]++;
+    }
+    printf("frequency count:\n");
+    for(i=0;str[i]!='\0';i++){
+       if(str[i]!='\n' && frequency[(unsigned char)str[i]]!=0){
+           printf(" '%c' = %d\n",str[i],frequency[(unsigned char)str[i]]);
+           frequency[(unsigned char)str[i]]=0;
+       }
+    }
+    return 0;
+}
+```
 # Output:
+![alt text](<Screenshot 2025-12-26 183209.png>)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -169,7 +278,39 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[200];
+    char words[50][50];
+    int i, j, k = 0, duplicate;
+    printf("Enter a sentence: ");
+    fgets(str, sizeof(str), stdin);
+    char *token = strtok(str, " ,.\n");
+    while (token != NULL) {
+        duplicate = 0;
+        for (i = 0; i < k; i++) {
+            if (strcmp(words[i], token) == 0) {
+                duplicate = 1;
+                break;
+            }
+        }
+        if (!duplicate) {
+            strcpy(words[k], token);
+           k++;
+        }
+        token = strtok(NULL, " ,.\n");
+    }
+    printf("\nString with unique words:\n");
+    for (j = 0; j < k; j++) {
+        printf("%s ", words[j]);
+    }
+    return 0;
+}
+```
 # Output:
+![alt text](<Screenshot 2025-12-26 183456.png>)
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
